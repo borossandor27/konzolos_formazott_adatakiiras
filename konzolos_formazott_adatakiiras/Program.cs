@@ -23,6 +23,15 @@ namespace konzolos_formazott_adatakiiras
             for (int ctr = 0; ctr < names.Length; ctr++)
                 Console.WriteLine("{0,-20} {1,5:N1}", names[ctr], hours[ctr]);
 
+            Console.WriteLine("\n\nDátumok\n_______");
+            DateTime date = DateTime.Today;
+            Console.WriteLine("D => {0:D}", date);
+            Console.WriteLine("d => {0:d}", date);
+            Console.WriteLine("F => {0:F}", date);
+            Console.WriteLine("f => {0:f}", date);
+            Console.WriteLine("G => {0:G}", date);
+            Console.WriteLine("g => {0:g}", date);
+
             /*
              *          -- Pénzügyi és egyéb nemzeti --
              *          
@@ -33,19 +42,18 @@ namespace konzolos_formazott_adatakiiras
 
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-
-            foreach (var cultureName in cultureNames)
+            foreach (var culture in cultureNames)
             {
-                // Change the current thread culture.
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
-                Console.WriteLine("The current culture is {0}",
-                                  Thread.CurrentThread.CurrentCulture.Name);
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(culture);
+                Console.WriteLine("The current culture is {0}", Thread.CurrentThread.CurrentCulture.Name);
+                Console.WriteLine(CultureInfo.CurrentCulture.DisplayName);
                 Console.WriteLine(value.ToString("C2"));
+                Console.WriteLine("D => {0:D}", date);
                 Console.WriteLine();
 
-                Console.ReadKey();
             }
+
+            Console.ReadKey();
         }
     }
 }
